@@ -1,0 +1,19 @@
+import kotlin.Boolean;
+
+CREATE TABLE ActivityPreset (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    category_id INTEGER,
+    subcategory_id INTEGER,
+    label_id INTEGER,
+    is_visible INTEGER AS Boolean NOT NULL DEFAULT 1,
+    sort_order INTEGER NOT NULL DEFAULT 0,
+
+    FOREIGN KEY(category_id) REFERENCES ActivityCategory(id) ON DELETE SET NULL,
+    FOREIGN KEY(subcategory_id) REFERENCES ActivitySubcategory(id) ON DELETE SET NULL,
+    FOREIGN KEY(label_id) REFERENCES ActivityLabel(id) ON DELETE SET NULL
+);
+
+CREATE UNIQUE INDEX idx_activity_preset_name
+ON ActivityPreset(name);

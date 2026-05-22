@@ -1,0 +1,38 @@
+CREATE TABLE ActivityLog (
+    id INTEGER NOT NULL PRIMARY KEY,
+    category_id INTEGER,
+    subcategory_id INTEGER,
+    label_id INTEGER,
+
+    -- UNIX epoch millis
+    start_at INTEGER NOT NULL,
+    -- NULL = 実行中
+    end_at INTEGER,
+
+    memo TEXT NOT NULL DEFAULT '',
+
+    created_at INTEGER NOT NULL,
+
+    FOREIGN KEY(category_id) REFERENCES ActivityCategory(id) ON DELETE SET NULL,
+    FOREIGN KEY(subcategory_id) REFERENCES ActivitySubcategory(id) ON DELETE SET NULL,
+    FOREIGN KEY(label_id) REFERENCES ActivityLabel(id) ON DELETE SET NULL
+);
+
+CREATE INDEX idx_activity_log_start_at
+ON ActivityLog(start_at);
+
+CREATE INDEX idx_activity_log_end_at
+ON ActivityLog(end_at);
+
+CREATE INDEX idx_activity_log_category_id
+ON ActivityLog(category_id);
+
+CREATE INDEX idx_activity_log_subcategory_id
+ON ActivityLog(subcategory_id);
+
+CREATE INDEX idx_activity_log_label_id
+ON ActivityLog(label_id);
+
+CREATE INDEX idx_activity_log_running
+ON ActivityLog(end_at)
+WHERE end_at IS NULL;

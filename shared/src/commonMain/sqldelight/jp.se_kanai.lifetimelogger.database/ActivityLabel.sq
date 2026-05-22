@@ -1,0 +1,13 @@
+import kotlin.Boolean;
+
+CREATE TABLE ActivityLabel (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    color TEXT,
+    is_visible INTEGER AS Boolean NOT NULL DEFAULT 1,
+    sort_order INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE UNIQUE INDEX idx_activity_label_name
+ON ActivityLabel(name);
