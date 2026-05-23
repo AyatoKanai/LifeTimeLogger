@@ -1,5 +1,5 @@
 CREATE TABLE ActivityLog (
-    id INTEGER NOT NULL PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     category_id INTEGER,
     subcategory_id INTEGER,
     label_id INTEGER,
