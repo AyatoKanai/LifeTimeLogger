@@ -4,7 +4,7 @@ CREATE TABLE ActivityPreset (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     description TEXT NOT NULL,
-    category_id INTEGER,
+    category_id INTEGER NOT NULL,
     subcategory_id INTEGER,
     label_id INTEGER,
     is_visible INTEGER AS Boolean NOT NULL DEFAULT 1,

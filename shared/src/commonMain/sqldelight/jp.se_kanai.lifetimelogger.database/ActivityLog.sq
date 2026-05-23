@@ -1,6 +1,6 @@
 CREATE TABLE ActivityLog (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    category_id INTEGER,
+    category_id INTEGER NOT NULL,
     subcategory_id INTEGER,
     label_id INTEGER,
 
