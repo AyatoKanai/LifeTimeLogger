@@ -5,10 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import jp.se_kanai.lifetimelogger.android.ui.screen.HomeScreen
 import jp.se_kanai.lifetimelogger.database.DatabaseDriverFactory
 import jp.se_kanai.lifetimelogger.database.createDatabase
+import jp.se_kanai.lifetimelogger.navigation.Screen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +27,31 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // ホーム画面のレイアウトを表示（ロジックは不要なので固定ダミー値）
-                    HomeScreen()
+                    AppNav()
                 }
             }
         }
+    }
+}
+
+@Composable
+fun AppNav() {
+    val navController = rememberNavController()
+    NavHost(navController, startDestination = Screen.Home.id) {
+        composable(Screen.Home.id) {
+            HomeScreen()
+        }
+
+//        composable(
+//            Screen.SettingCustomFieldList.route,
+//            arguments = listOf(navArgument("field_index") { type = NavType.IntType })
+//        ) { backStackEntry ->
+//            val fieldIndex = backStackEntry.arguments?.getInt("field_index") ?: 1
+//            CustomFieldListSettingScreen(
+//                navController = navController,
+////                        drawerState = drawerState
+//                fieldIndex = fieldIndex
+//            )
+//        }
     }
 }
