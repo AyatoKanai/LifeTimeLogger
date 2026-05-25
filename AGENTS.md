@@ -5,6 +5,7 @@
 
 ## Architecture
 - Kotlin Multiplatform
+- Jetpack Compose
 - SQLDelight
 - MVVM + Repository
 
