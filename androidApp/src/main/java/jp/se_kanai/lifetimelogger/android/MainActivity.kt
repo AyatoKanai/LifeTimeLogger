@@ -3,38 +3,29 @@ package jp.se_kanai.lifetimelogger.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import jp.se_kanai.lifetimelogger.Greeting
+import jp.se_kanai.lifetimelogger.android.ui.screen.HomeScreen
+import jp.se_kanai.lifetimelogger.database.DatabaseDriverFactory
+import jp.se_kanai.lifetimelogger.database.createDatabase
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val db = createDatabase(DatabaseDriverFactory(this))
+
         setContent {
             MyApplicationTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingView(Greeting().greet())
+                    // ホーム画面のレイアウトを表示（ロジックは不要なので固定ダミー値）
+                    HomeScreen()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
     }
 }
