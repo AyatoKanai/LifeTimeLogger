@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace = "jp.se_kanai.lifetimelogger.android"
-    compileSdk = 35
+    compileSdk = 37
     defaultConfig {
         applicationId = "jp.se_kanai.lifetimelogger.android"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
     }
