@@ -4,6 +4,7 @@ CREATE TABLE ActivityLabel (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     description TEXT NOT NULL,
+    use_color INTEGER AS Boolean NOT NULL DEFAULT 0,
     color TEXT,
     is_visible INTEGER AS Boolean NOT NULL DEFAULT 1,
     sort_order INTEGER NOT NULL DEFAULT 0
