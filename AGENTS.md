@@ -17,8 +17,8 @@
 - MVVM + Repository
 
 ### ViewModel
-- `shared`に実装
-- プラットフォーム間の互換性を保つため、Androidの `androidx.lifecycle.ViewModel` は使用せず、必要な処理をまとめた`BaseViewModel`を継承して実装
+- プラットフォーム間の互換性を保つため、`shared`に実装
+- プラットフォームごとに共有できないロジックはViewModelから切り出しつつ`expect/actual`などで対応
 - 画面に出すデータは基本的に`UiState`クラスとして定義して画面ごとに一元管理
 
 ### Repository
